@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/1.overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/2.market/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/3.asset/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/4.spot_order/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/5.options_order/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/6.swap_order/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/7.hq_api/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/8.hq_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/9.user_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://bitwell-tech.github.io/openapi/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://bitwell-tech.github.io/openapi/"
+                />
+  </url>
+  
+</urlset>

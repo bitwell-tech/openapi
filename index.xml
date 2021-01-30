@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BitWell API</title>
+    <link>https://bitwell-tech.github.io/openapi/</link>
+    <description>Recent content on BitWell API</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://bitwell-tech.github.io/openapi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API概述</title>
+      <link>https://bitwell-tech.github.io/openapi/1.overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/1.overview/</guid>
+      <description>API概述 0. 域名 线上域名: https://openapi.bitwellex.com, https://openapi.bitwellex.co
+您可以自行比较使用openapi.bitwellex.com和openapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+其中，openapi.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
+1. 访问限制 本章节访问限制的细节：
+ Rest API  当访问超过频率限制时，将返回429状态：请求太频繁。
+1.1 Rest API 如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。
+限速规则：各个接口上有单独的说明，如果没有一般接口限速为 5次/秒。
+1.2 WebSocket WebSocket将每个命令类型限制为每秒50条命令
+2. 验证 本章节主要为验证的细节分以下4个方面：
+ 生成APIKey 发起请求 签名 时间戳  2.1 生成APIKey 在对任何请求进行签名之前，您必须通过BitWell网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：
+ APIKey SecretKey  APIKey和SecretKey将由BitWell生成和提供。
+2.2 发起请求 所有REST请求头都必须包含如下KEY：
+ BW-ACCESS-KEY: 字符串类型的APIKey。 BW-ACCESS-SIGN: 使用Base64编码签名(请参阅签名)。 BW-ACCESS-TIMESTAMP: 发起请求的时间戳。  FT-language 语言(可选)，支持以下三种，默认 &amp;ldquo;en-US&amp;rdquo;
+ 简体中文 zh-CN 繁体中文 zh-HK 英文 en-US  所有请求都应该含有application/json类型内容，并且是有效的JSON。
+2.3 签名 BW-ACCESS-SIGN的请求头是对timestamp + Request Method + Request Path + Request body + SecretKey　(其中+表示字符串连接) 使用HMAC SHA256方法加密，然后通过Base64编码输出而得。</description>
+    </item>
+    
+    <item>
+      <title>市场交易对</title>
+      <link>https://bitwell-tech.github.io/openapi/2.market/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/2.market/</guid>
+      <description>市场交易对 1. 现货交易对 请求方式: GET
+请求地址: /pub/openapi/v1/symbol/spot/all
+登录授权: 否
+请求参数: 无
+返回结果:
+   字段名 字段类型 备注     base_asset string 基础资产code   quote_asset string 交易资产code   symbol string 交易对code   price_precision int 价格精度   volume_precision int 数量精度    { &amp;#34;data&amp;#34;: [ { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;quote_asset&amp;#34;: &amp;#34;BTC&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;BTC_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;volume_precision&amp;#34;: 4 }, { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;ETH_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;quote_asset&amp;#34;: &amp;#34;ETH&amp;#34;, &amp;#34;volume_precision&amp;#34;: 4 } ], &amp;#34;errmsg&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;: 0 } 2.</description>
+    </item>
+    
+    <item>
+      <title>资产API</title>
+      <link>https://bitwell-tech.github.io/openapi/3.asset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/3.asset/</guid>
+      <description>资产API 输出结构如下
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+1. 资产查询 请求方式: GET
+请求地址: /openapi/v1/asset/all
+请求授权: 是
+请求参数:
+无
+响应数据:
+   字段名 字段类型 备注     items array 资产列表     返回参数 items     字段名 字段类型 备注     code string 资产code   name string 资产名称    { &amp;#34;data&amp;#34;: { &amp;#34;items&amp;#34;: [ { &amp;#34;code&amp;#34;: &amp;#34;BTC&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;Bitcoin&amp;#34; }, { &amp;#34;code&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;Tether USD&amp;#34; } ] }, &amp;#34;errmsg&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;: 0 } 2.</description>
+    </item>
+    
+    <item>
+      <title>现货API</title>
+      <link>https://bitwell-tech.github.io/openapi/4.spot_order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/4.spot_order/</guid>
+      <description>现货API 输出结构如下
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+1. 下单 请求方式: POST
+请求地址: /openapi/v1/spot/order/place
+请求授权: 是
+请求参数:
+{ &amp;#34;symbol&amp;#34;:&amp;#34;BTC_USDT&amp;#34;, &amp;#34;order_type&amp;#34;:&amp;#34;buy_limit&amp;#34;, &amp;#34;price&amp;#34;:8838, &amp;#34;volume&amp;#34;:0.01, &amp;#34;client_oid&amp;#34;:&amp;#34;test1111111111111&amp;#34; }    字段名 字段类型 是否必须 中文说明 默认值 备注     symbol string true 交易对 NA 如: BTC_USDT, ETH_USDT   order_type string true 订单类型 NA buy_limit:限价-买,</description>
+    </item>
+    
+    <item>
+      <title>期权API</title>
+      <link>https://bitwell-tech.github.io/openapi/5.options_order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/5.options_order/</guid>
+      <description>期权API 输出结构如下
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+1. 下单  请求方式: POST
+请求地址: /openapi/v1/options/order/place
+请求授权: 是
+请求参数:
+{ &amp;#34;symbol&amp;#34;: &amp;#34;BTC-0612-7500-C&amp;#34;, &amp;#34;price&amp;#34;:218.1, &amp;#34;volume&amp;#34;:1, &amp;#34;offset&amp;#34;: &amp;#34;open&amp;#34;, &amp;#34;open_mode&amp;#34;: &amp;#34;buy&amp;#34;, &amp;#34;client_oid&amp;#34;:&amp;#34;test2111111111111&amp;#34; } 常用参数:
+   字段名 字段类型 是否必须 中文说明 默认值 备注     symbol string true 交易对 NA 如: BTC-0515-8250-C, BTC-0515-8250-P   price float true 委托价格 NA price_type为market时可不传此参数   volume int true 委托数量(张) NA 委托数量只能为整数(xx张)   offset string true 开仓/平仓 NA open: 开仓, close: 平仓   open_mode string true 开仓模式 NA buy: 买入开仓,</description>
+    </item>
+    
+    <item>
+      <title>永续API</title>
+      <link>https://bitwell-tech.github.io/openapi/6.swap_order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/6.swap_order/</guid>
+      <description>永续API 输出结构如下
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+1. 获取下单数据  请求方式: GET
+请求地址: /openapi/v1/swap/order/data
+请求授权: 是
+请求参数:
+   字段名 字段类型 是否必须 中文说明 默认值 备注     symbol string true 交易对 NA 如: BTCUSDT_SWAP    响应数据:</description>
+    </item>
+    
+    <item>
+      <title>行情API</title>
+      <link>https://bitwell-tech.github.io/openapi/7.hq_api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/7.hq_api/</guid>
+      <description>行情API 输出结构如下
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+1. K线数据(蜡烛图) 请求方式: GET
+请求地址: /pub/openapi/v1/hq/kline
+登录授权: 否
+特殊说明: 这个接口的返回值中time 是一个区间段的开始, 例如:8:00~8:15的数据, time是8:00的时间戳
+请求参数:
+   字段名 字段类型 是否必须 中文说明 备注     symbol string 是 交易对代码 如: BTC_USDT   type int 否 K线类型 参照type参数列表   num int 否 数量 默认60 最大值2880   ts int 否 时间戳 取时间戳之前数据    type参数列表:</description>
+    </item>
+    
+    <item>
+      <title>行情WS</title>
+      <link>https://bitwell-tech.github.io/openapi/8.hq_ws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/8.hq_ws/</guid>
+      <description>行情WS 1. WS说明 接口地址 wss://openws.bitwellex.com/v2
+wss://openws.bitwellex.co/v2
+您可以自行比较使用openws.bitwellex.com和openws.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+其中，openws.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
+QA QA1:
+ Q: ws的kline时间 和 kline接口返回历史数据里 date字段的值 单位不太一样 A: ws的单位是: us , 然后api的单位是: s
+ QA2:
+ Q: 比如 USDT_BTC-QUOTE 这条指令 如果我发了多次 会合并吗?我发了同样指令 会成倍的返回消息吗?
+A: 会合并, 不会成倍推送消息, 服务端做了唯一校验,如果当前用户订阅了该key,二次订阅无效
+ QA3:
+ Q: 如果分钟,小时,天,分时来回的切换的话,我是不是要频繁的先给ws发送unsub请求才行? 先发送unsub 再发送sub
+A: 对, 需要客户端unsub掉历史的, 防止ws泄露(例如用户点击了4下, 如果不unsub, 就会成4倍的推送消息)
+ 建立连接 地址如上
+ping text 由于服务器和客户端维护ws有心跳时间, 如果60s内无心跳,或者无数据通讯, 有可能会造成服务端或者客户端主动断开连接, 所以服务端提供ping text消息, 请在60s返回内定期发送ping text
+格式: 客户端发送消息: ping 服务端回应: success
+如果服务端未回复,有可能是服务端已经主动断开了连接, 请重连
+2. 鉴权 鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</description>
+    </item>
+    
+    <item>
+      <title>用户相关WS</title>
+      <link>https://bitwell-tech.github.io/openapi/9.user_ws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/openapi/9.user_ws/</guid>
+      <description>用户相关WS 1. 概述 授权/数据格式同 行情ws 相关约定
+2. 用户订单 订阅格式 { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_ORDER&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;state_change&amp;#34; # 订单变更 } 响应数据 同订单列表数据格式
+3. 用户期权  订阅格式 { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_OPTION&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;pos_change&amp;#34; # 持仓变更 } 响应数据 { &amp;#34;symbol&amp;#34;: &amp;#34;BTC-20201016-7500-C&amp;#34; &amp;#34;open_mode&amp;#34;: &amp;#34;buy&amp;#34;, &amp;#34;open_volume&amp;#34;: 0, &amp;#34;frozen_volume&amp;#34;: 0, }    字段名 字段类型 说明     symbol string 交易对code   open_mode string 开仓方式， buy: 开仓买入， margin_sell:保证金卖出，covered_sell:备兑卖出   open_volume int 开仓数量   frozen_volume int 冻结数量    </description>
+    </item>
+    
+  </channel>
+</rss>
