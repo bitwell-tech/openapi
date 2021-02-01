@@ -217,6 +217,12 @@
                         
                             <li><a href="#swap_position" class="toc-h2 toc-link" data-title="13. 永续合约持仓查询">13. 永续合约持仓查询</a></li>
                         
+                            <li><a href="#swap_draw_margin" class="toc-h2 toc-link" data-title="14. 超额保证金提取">14. 超额保证金提取</a></li>
+                        
+                            <li><a href="#swap_cross_margin_add" class="toc-h2 toc-link" data-title="15. 全仓模式 - 保证金追加">15. 全仓模式 - 保证金追加</a></li>
+                        
+                            <li><a href="#swap_isolated_margin_add" class="toc-h2 toc-link" data-title="16. 逐仓模式 - 保证金追加">16. 逐仓模式 - 保证金追加</a></li>
+                        
                     </ul>
                 
             </li>
@@ -276,7 +282,9 @@
                         
                             <li><a href="#user_ws_order" class="toc-h2 toc-link" data-title="2. 用户订单">2. 用户订单</a></li>
                         
-                            <li><a href="#user_ws_option" class="toc-h2 toc-link" data-title="3. 用户期权 ">3. 用户期权 </a></li>
+                            <li><a href="#user_ws_option" class="toc-h2 toc-link" data-title="3. 用户期权">3. 用户期权</a></li>
+                        
+                            <li><a href="#user_ws_swap" class="toc-h2 toc-link" data-title="4. 用户永续">4. 用户永续</a></li>
                         
                     </ul>
                 
@@ -4558,7 +4566,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 </tbody>
 </table>
-<p>返回结果:</p>
+<p>响应数据:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{},
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -4600,7 +4608,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 </tbody>
 </table>
-<p>返回结果:</p>
+<p>响应数据:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{},
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -5310,6 +5318,16 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>交易对名称</td>
 </tr>
 <tr>
+<td>margin_mode</td>
+<td>string</td>
+<td>保证金模式, <code>cross</code>: 全仓, <code>isolated</code>: 逐仓</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>int</td>
+<td>杠杆</td>
+</tr>
+<tr>
 <td>direction</td>
 <td>string</td>
 <td>买卖方向, <code>buy</code>:买, <code>sell</code>:卖</td>
@@ -5372,6 +5390,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1040000634984</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
         <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+        <span style="color:#e6db74">&#34;margin_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cross&#34;</span>,
+        <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span>,
         <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
         <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
         <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>,
@@ -5535,6 +5555,16 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>交易对名称</td>
 </tr>
 <tr>
+<td>margin_mode</td>
+<td>string</td>
+<td>保证金模式, <code>cross</code>: 全仓, <code>isolated</code>: 逐仓</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>int</td>
+<td>杠杆</td>
+</tr>
+<tr>
 <td>direction</td>
 <td>string</td>
 <td>买卖方向, <code>buy</code>:买, <code>sell</code>:卖</td>
@@ -5599,6 +5629,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1040000634984</span>,
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+                <span style="color:#e6db74">&#34;margin_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cross&#34;</span>,
+                <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span>,
                 <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
                 <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
                 <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>,
@@ -5846,7 +5878,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>false</td>
 <td>交易对</td>
 <td>NA</td>
-<td>如: BTC-0515-8250-C</td>
+<td>如: BTCUSDT_SWAP</td>
 </tr>
 <tr>
 <td>symbols</td>
@@ -5936,6 +5968,11 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>交易对名称</td>
 </tr>
 <tr>
+<td>margin_mode</td>
+<td>string</td>
+<td>保证金模式, <code>cross</code>: 全仓, <code>isolated</code>: 逐仓</td>
+</tr>
+<tr>
 <td>leverage</td>
 <td>string</td>
 <td>杠杆</td>
@@ -5956,19 +5993,9 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>冻结数量</td>
 </tr>
 <tr>
-<td>available</td>
-<td>int</td>
-<td>可平仓数量<br> - open_volume(持仓数量) - frozen_volume(冻结数量)</td>
-</tr>
-<tr>
 <td>liquidate_price</td>
 <td>string</td>
 <td>强平价</td>
-</tr>
-<tr>
-<td>broken_price</td>
-<td>string</td>
-<td>破产价</td>
 </tr>
 <tr>
 <td>avg_open_price</td>
@@ -5976,14 +6003,29 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>开仓均价</td>
 </tr>
 <tr>
-<td>open_profit</td>
-<td>string</td>
-<td>浮动盈亏</td>
-</tr>
-<tr>
 <td>profit</td>
 <td>string</td>
 <td>已实现盈亏</td>
+</tr>
+<tr>
+<td>margin_asset</td>
+<td>string</td>
+<td>保证金资产</td>
+</tr>
+<tr>
+<td>open_margin</td>
+<td>string</td>
+<td>初始保证金(开仓保证金)</td>
+</tr>
+<tr>
+<td>position_margin</td>
+<td>string</td>
+<td>持仓保证金</td>
+</tr>
+<tr>
+<td>max_draw_amount</td>
+<td>string</td>
+<td>超额保证金(最大可提取数量)</td>
 </tr>
 </tbody>
 </table>
@@ -5991,52 +6033,347 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
         <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
             {
-                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">40</span>,
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1000402</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
-                <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;30&#34;</span>,
+                <span style="color:#e6db74">&#34;margin_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cross&#34;</span>,
+                <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;20&#34;</span>,
                 <span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-                <span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">111</span>,
-                <span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-                <span style="color:#e6db74">&#34;available&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">110</span>,
-                <span style="color:#e6db74">&#34;liquidate_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7866.74&#34;</span>,
-                <span style="color:#e6db74">&#34;broken_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7800.07&#34;</span>,
-                <span style="color:#e6db74">&#34;avg_open_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;8000&#34;</span>,
-                <span style="color:#e6db74">&#34;open_profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
-                <span style="color:#e6db74">&#34;profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;-0.08&#34;</span>
+                <span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>,
+                <span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;liquidate_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;18912.5&#34;</span>,
+                <span style="color:#e6db74">&#34;avg_open_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;25000&#34;</span>,
+                <span style="color:#e6db74">&#34;profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;margin_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;open_margin&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5&#34;</span>,
+                <span style="color:#e6db74">&#34;position_margin&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;26.849992&#34;</span>,
+                <span style="color:#e6db74">&#34;max_draw_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;21.849992&#34;</span>
             },
             {
-                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">38</span>,
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1000395</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
-                <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;10&#34;</span>,
-                <span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-                <span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">111</span>,
-                <span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-                <span style="color:#e6db74">&#34;available&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">110</span>,
-                <span style="color:#e6db74">&#34;liquidate_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;11400.11&#34;</span>,
-                <span style="color:#e6db74">&#34;broken_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;11100.11&#34;</span>,
-                <span style="color:#e6db74">&#34;avg_open_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;12000&#34;</span>,
-                <span style="color:#e6db74">&#34;open_profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;-44400&#34;</span>,
-                <span style="color:#e6db74">&#34;profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;-0.12&#34;</span>
-            },
-            {
-                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">37</span>,
-                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+                <span style="color:#e6db74">&#34;margin_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cross&#34;</span>,
                 <span style="color:#e6db74">&#34;leverage&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;20&#34;</span>,
                 <span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
-                <span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+                <span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15</span>,
                 <span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;available&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
-                <span style="color:#e6db74">&#34;liquidate_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;68450.68&#34;</span>,
-                <span style="color:#e6db74">&#34;broken_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;20750.2&#34;</span>,
-                <span style="color:#e6db74">&#34;avg_open_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;18000&#34;</span>,
-                <span style="color:#e6db74">&#34;open_profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2000&#34;</span>,
-                <span style="color:#e6db74">&#34;profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;-0.36&#34;</span>
+                <span style="color:#e6db74">&#34;liquidate_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;95661.39&#34;</span>,
+                <span style="color:#e6db74">&#34;avg_open_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;25000&#34;</span>,
+                <span style="color:#e6db74">&#34;profit&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;margin_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;open_margin&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;18.75&#34;</span>,
+                <span style="color:#e6db74">&#34;position_margin&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1078.670842&#34;</span>,
+                <span style="color:#e6db74">&#34;max_draw_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1059.920842&#34;</span>
             }
         ],
         <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
             <span style="color:#e6db74">&#34;prev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
             <span style="color:#e6db74">&#34;next&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/openapi/v1/swap/position?next_id=37&amp;num=3&amp;page_index=2&#34;</span>
         }
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="swap_draw_margin">14. 超额保证金提取</h2>
+<p>请求方式: <code>POST</code><br>
+请求地址: <code>/openapi/v1/swap/draw_margin</code><br>
+请求授权: <code>是</code></p>
+<p>请求参数:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;draw_margins&#34;</span><span style="color:#f92672">:</span> [
+        {
+            <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.1</span>
+        }, {
+            <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2.2</span>
+        }
+    ]
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>draw_margins</td>
+<td>array</td>
+<td>true</td>
+<td>保证金提取数据</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>参数 <code>draw_margins</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pos_id</td>
+<td>int</td>
+<td>true</td>
+<td>持仓id</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>保证金提取金额</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>响应数据:</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>持仓数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回参数 <code>items</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pos_id</td>
+<td>int</td>
+<td>持仓id</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>string</td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>errno</td>
+<td>int</td>
+<td>错误码(<code>0</code>: 代表成功)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11</span>
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+            },
+            {
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+            }
+        ]
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="swap_cross_margin_add">15. 全仓模式 - 保证金追加</h2>
+<p>请求方式: <code>POST</code><br>
+请求地址: <code>/openapi/v1/swap/cross_margin_add</code><br>
+请求授权: <code>是</code></p>
+<p>请求参数:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2.2</span>
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>保证金追加金额</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>响应数据:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{},
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="swap_isolated_margin_add">16. 逐仓模式 - 保证金追加</h2>
+<p>请求方式: <code>POST</code><br>
+请求地址: <code>/openapi/v1/swap/isolated_margin_add</code><br>
+请求授权: <code>是</code></p>
+<p>请求参数:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;margin_adds&#34;</span><span style="color:#f92672">:</span> [
+        {
+            <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.1</span>
+        }, {
+            <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2.2</span>
+        }
+    ]
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>margin_adds</td>
+<td>array</td>
+<td>true</td>
+<td>保证金追加数据</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>参数 <code>margin_adds</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pos_id</td>
+<td>int</td>
+<td>true</td>
+<td>持仓id</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>保证金追加金额</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>持仓数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回参数 <code>items</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pos_id</td>
+<td>int</td>
+<td>持仓id</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>string</td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>errno</td>
+<td>int</td>
+<td>错误码(<code>0</code>: 代表成功)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11</span>
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+            },
+            {
+                <span style="color:#e6db74">&#34;pos_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+            }
+        ]
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
     <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
@@ -6978,7 +7315,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </span><span style="color:#75715e"></span>}
 </code></pre></div><h3 id="heading-1">响应数据</h3>
 <p>同订单列表数据格式</p>
-<h2 id="user_ws_option">3. 用户期权 </h2>
+<h2 id="user_ws_option">3. 用户期权</h2>
 <h3 id="heading-2">订阅格式</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sub&#34;</span>,
@@ -7023,6 +7360,15 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
+<h2 id="user_ws_swap">4. 用户永续</h2>
+<h3 id="heading-4">订阅格式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sub&#34;</span>,
+    <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span>[<span style="color:#e6db74">&#34;USER_SWAP&#34;</span>],
+    <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pos_change&#34;</span> <span style="color:#75715e"># 持仓变更
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="heading-5">响应数据</h3>
+<p><code>同永续合约持仓查询</code></p>
 
     
 

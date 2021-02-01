@@ -155,7 +155,7 @@ ping text 由于服务器和客户端维护ws有心跳时间, 如果60s内无心
       <guid>https://bitwell-tech.github.io/openapi/9.user_ws/</guid>
       <description>用户相关WS 1. 概述 授权/数据格式同 行情ws 相关约定
 2. 用户订单 订阅格式 { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_ORDER&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;state_change&amp;#34; # 订单变更 } 响应数据 同订单列表数据格式
-3. 用户期权  订阅格式 { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_OPTION&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;pos_change&amp;#34; # 持仓变更 } 响应数据 { &amp;#34;symbol&amp;#34;: &amp;#34;BTC-20201016-7500-C&amp;#34; &amp;#34;open_mode&amp;#34;: &amp;#34;buy&amp;#34;, &amp;#34;open_volume&amp;#34;: 0, &amp;#34;frozen_volume&amp;#34;: 0, }    字段名 字段类型 说明     symbol string 交易对code   open_mode string 开仓方式， buy: 开仓买入， margin_sell:保证金卖出，covered_sell:备兑卖出   open_volume int 开仓数量   frozen_volume int 冻结数量    </description>
+3. 用户期权 订阅格式 { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_OPTION&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;pos_change&amp;#34; # 持仓变更 } 响应数据 { &amp;#34;symbol&amp;#34;: &amp;#34;BTC-20201016-7500-C&amp;#34; &amp;#34;open_mode&amp;#34;: &amp;#34;buy&amp;#34;, &amp;#34;open_volume&amp;#34;: 0, &amp;#34;frozen_volume&amp;#34;: 0, }    字段名 字段类型 说明     symbol string 交易对code   open_mode string 开仓方式， buy: 开仓买入， margin_sell:保证金卖出，covered_sell:备兑卖出   open_volume int 开仓数量   frozen_volume int 冻结数量    4.</description>
     </item>
     
   </channel>
