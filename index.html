@@ -2862,6 +2862,16 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>string</td>
 <td>交易对</td>
 </tr>
+<tr>
+<td>bonus_asset</td>
+<td>string</td>
+<td>补贴资产</td>
+</tr>
+<tr>
+<td>bonus_volume</td>
+<td>string</td>
+<td>补贴资产数量</td>
+</tr>
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
@@ -2874,7 +2884,9 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;match_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1591431070</span>,
                 <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;9607.04&#34;</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
-                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.01&#34;</span>
+                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.01&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.15&#34;</span>
             }
         ],
         <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
@@ -4091,6 +4103,16 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>string</td>
 <td>开仓模式, <code>buy</code>: 买入开仓,<br> <code>covered_sell</code>：备兑卖出开仓,<br> <code>margin_sell</code>：保证金卖出开仓</td>
 </tr>
+<tr>
+<td>bonus_asset</td>
+<td>string</td>
+<td>补贴资产</td>
+</tr>
+<tr>
+<td>bonus_volume</td>
+<td>string</td>
+<td>补贴资产数量</td>
+</tr>
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
@@ -4105,7 +4127,10 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;margin_sell&#34;</span>,
                 <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;213.37&#34;</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-0612-7500-C&#34;</span>,
-                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>
+                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.15&#34;</span>
+
             }
         ],
         <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
@@ -5817,6 +5842,16 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>string</td>
 <td>开仓/平仓, <code>open</code>: 开仓, <code>close</code>: 平仓</td>
 </tr>
+<tr>
+<td>bonus_asset</td>
+<td>string</td>
+<td>补贴资产</td>
+</tr>
+<tr>
+<td>bonus_volume</td>
+<td>string</td>
+<td>补贴资产数量</td>
+</tr>
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
@@ -5830,7 +5865,9 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;match_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1608631913</span>,
                 <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
                 <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>
+                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.15&#34;</span>
             }
         ],
         <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
