@@ -1470,7 +1470,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>true</td>
 <td>订单类型</td>
 <td>NA</td>
-<td><code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>:限价止盈,<br><code>market_stop_loss</code>:市价止损,<br> <code>market_stop_profit</code>:市价止盈</td>
+<td><code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>:限价止盈,<br><code>market_stop_loss</code>:市价止损,<br> <code>market_stop_profit</code>:市价止盈,<br> <code>buy_post_only</code>: 只挂单-买,<br> <code>sell_post_only</code>: 只挂单-卖</td>
 </tr>
 <tr>
 <td>price</td>
@@ -1526,10 +1526,10 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <li>
 <p>remain_type : 剩余处理类型,  默认值</p>
 <p>限价单, remain_type用 <code>limit</code>: 以委托价挂单</p>
-<p>市价单, remain_type用 <code>cancel</code>: 未满足部分即时撤单</p>
+<p>市价单/只挂单, remain_type用 <code>cancel</code>: 未满足部分即时撤单</p>
 </li>
 <li>
-<p>市价单, remain_type只支持 <code>cancel</code>: 未满足部分即时撤单</p>
+<p>市价单/只挂单, remain_type只支持 <code>cancel</code>: 未满足部分即时撤单</p>
 </li>
 </ul>
 <h3 id="order_type-">order_type 具体分类</h3>
@@ -1869,6 +1869,90 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 </tbody>
 </table>
+<h4 id="19-buy_post_only--">1.9 <code>buy_post_only</code>: 只挂单-买</h4>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>交易对</td>
+<td>见上</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>订单类型</td>
+<td>值为 <code>buy_post_only</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>委托价格</td>
+<td>见上</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>委托数量</td>
+<td>见上</td>
+</tr>
+</tbody>
+</table>
+<h4 id="110-sell_post_only--">1.10 <code>sell_post_only</code>: 只挂单-卖</h4>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>是否必须</th>
+<th>中文说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>交易对</td>
+<td>见上</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>订单类型</td>
+<td>值为 <code>sell_post_only</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>委托价格</td>
+<td>见上</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>委托数量</td>
+<td>见上</td>
+</tr>
+</tbody>
+</table>
 <p>响应数据:</p>
 <table>
 <thead>
@@ -1992,7 +2076,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>true</td>
 <td>订单类型</td>
 <td>NA</td>
-<td><code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>:限价止盈,<br><code>market_stop_loss</code>:市价止损,<br> <code>market_stop_profit</code>:市价止盈</td>
+<td><code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>:限价止盈,<br><code>market_stop_loss</code>:市价止损,<br> <code>market_stop_profit</code>:市价止盈,<br> <code>buy_post_only</code>: 只挂单-买,<br> <code>sell_post_only</code>: 只挂单-卖</td>
 </tr>
 <tr>
 <td>price</td>
@@ -2049,7 +2133,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <p>remain_type : 剩余处理类型, 默认值 <code>同&quot;下单api&quot;</code></p>
 </li>
 <li>
-<p>市价单, remain_type只支持 <code>cancel</code>: 未满足部分即时撤单</p>
+<p>市价单/只挂单, remain_type只支持 <code>cancel</code>: 未满足部分即时撤单</p>
 </li>
 </ul>
 <h3 id="order_type--api">order_type 具体分类: <code>同&quot;下单api&quot;</code></h3>
@@ -2403,7 +2487,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tr>
 <td>order_type</td>
 <td>string</td>
-<td>订单类型,<br> <code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>：限价止盈,<br><code>market_stop_loss</code>：市价止损,<br> <code>market_stop_profit</code>：市价止盈</td>
+<td>订单类型,<br> <code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>：限价止盈,<br><code>market_stop_loss</code>：市价止损,<br> <code>market_stop_profit</code>：市价止盈,<br> <code>buy_post_only</code>: 只挂单-买,<br> <code>sell_post_only</code>: 只挂单-卖</td>
 </tr>
 <tr>
 <td>remain_type</td>
@@ -2634,7 +2718,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tr>
 <td>order_type</td>
 <td>string</td>
-<td>订单类型,<br> <code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>：限价止盈,<br><code>market_stop_loss</code>：市价止损,<br> <code>market_stop_profit</code>：市价止盈</td>
+<td>订单类型,<br> <code>buy_limit</code>:限价-买,<br> <code>sell_limit</code>:限价-卖,<br> <code>buy_market</code>:市价-买,<br> <code>sell_market</code>:市价-卖,<br> <code>limit_stop_loss</code>:限价止损,<br><code>limit_stop_profit</code>：限价止盈,<br><code>market_stop_loss</code>：市价止损,<br> <code>market_stop_profit</code>：市价止盈,<br> <code>buy_post_only</code>: 只挂单-买,<br> <code>sell_post_only</code>: 只挂单-卖</td>
 </tr>
 <tr>
 <td>remain_type</td>
