@@ -286,6 +286,17 @@
                 
             </li>
         
+            <li>
+                <a href="#well" class="toc-h1 toc-link" data-title="well平台币数据">well平台币数据</a>
+                
+                    <ul class="toc-list-h2">
+                        
+                            <li><a href="#well_update" class="toc-h2 toc-link" data-title="1. 平台币数量分类更新">1. 平台币数量分类更新</a></li>
+                        
+                    </ul>
+                
+            </li>
+        
     </ul>
 
          
@@ -7718,6 +7729,70 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </code></pre></div><h3 id="heading-5">响应数据</h3>
 <p><code>同永续合约持仓查询</code></p>
 
+    
+        <h1 id="well">well平台币数据</h1>
+<h3 id="heading">概述</h3>
+<p>well平台币相关数据</p>
+<h2 id="well_update">1. 平台币数量分类更新</h2>
+<p>请求方式: <code>GET</code><br>
+请求地址:<code>/pub/openapi/v1/collateral/well_updates</code><br>
+登录授权:<code>否</code></p>
+<p>请求参数: 无</p>
+<p>返回结果:</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lock_amount</td>
+<td>int</td>
+<td>质押WELL数</td>
+</tr>
+<tr>
+<td>circulate_amount</td>
+<td>int</td>
+<td>流通量</td>
+</tr>
+<tr>
+<td>lock_percentage</td>
+<td>float</td>
+<td>当前质押/流通, 保留4位小数, lock_amount/circulate_amount</td>
+</tr>
+<tr>
+<td>destroyed_amount</td>
+<td>int</td>
+<td>已销毁WELL</td>
+</tr>
+<tr>
+<td>announce_issued_amount</td>
+<td>int</td>
+<td>名义发行总量</td>
+</tr>
+<tr>
+<td>destroyed_percentage</td>
+<td>float</td>
+<td>销毁/名义发行总量, 保留4位小数, destroyed_amount/announce_issued_amount</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;lock_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">36200</span>,
+        <span style="color:#e6db74">&#34;circulate_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100000</span>,
+        <span style="color:#e6db74">&#34;lock_percentage&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.36</span>,
+        <span style="color:#e6db74">&#34;destroyed_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10000</span>,
+        <span style="color:#e6db74">&#34;announce_issued_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1000000</span>,
+        <span style="color:#e6db74">&#34;destroyed_percentage&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.01</span> 
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div>
     
 
         </div>
